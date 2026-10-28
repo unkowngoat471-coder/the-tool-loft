@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b12">
+<title>The Tool Loft | Digital Tools & Creative Services</title>
+<style>
+:root{--bg:#0b0b12;--panel:#151521;--panel2:#1c1c2a;--text:#f5f5fb;--muted:#b0b0c3;--line:#303044;--lime:#baff62;--violet:#a78bfa}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#27213d 0,transparent 38%),var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+.wrap{width:min(1150px,92%);margin:auto}header{position:sticky;top:0;z-index:5;background:#0b0b12ed;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:12px}.brand{font-size:1.15rem;font-weight:900;letter-spacing:.5px}.brand span{color:var(--lime)}.tag{font-size:.8rem;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:8px 11px}
+.hero{padding:55px 0 35px;display:grid;grid-template-columns:1.3fr .7fr;gap:25px;align-items:center}.eyebrow{color:var(--lime);font-size:.76rem;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(2.5rem,6vw,4.8rem);line-height:1;letter-spacing:-2px;margin:14px 0}h1 span{color:var(--lime)}.lead{color:var(--muted);line-height:1.7;font-size:1.04rem;max-width:650px}
+.hero-box{padding:24px;border:1px solid #41415a;border-radius:22px;background:linear-gradient(145deg,#25243b,#151521)}.hero-box h3{margin:8px 0}.hero-box p{color:var(--muted);line-height:1.6;margin:0}
+section{padding:24px 0 42px}.heading{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:20px}h2{font-size:clamp(1.6rem,3vw,2.2rem);margin:0}.heading p{color:var(--muted);margin:7px 0 0}.count{color:var(--muted);font-size:.83rem;border:1px solid var(--line);border-radius:99px;padding:8px 11px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:17px 0 22px}.filter{cursor:pointer;border:1px solid var(--line);border-radius:99px;padding:9px 13px;background:var(--panel);color:var(--muted)}.filter.active,.filter:hover{background:var(--lime);color:#111;border-color:var(--lime);font-weight:bold}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{background:linear-gradient(150deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:19px;padding:20px;display:flex;flex-direction:column;min-height:275px}.card:hover{border-color:#666680;transform:translateY(-2px);transition:.2s}
+.icon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:#baff6218;font-size:1.55rem;margin-bottom:15px}.card h3{margin:0 0 8px;font-size:1.12rem}.desc{color:var(--muted);font-size:.92rem;line-height:1.55;flex:1}.price{font-size:1.38rem;font-weight:900;margin-top:17px}.usd{color:var(--muted);font-size:.84rem;margin-top:5px}.detail{font-size:.82rem;color:#d5d5e5;margin:10px 0 15px}.btn{border:0;border-radius:11px;background:var(--lime);color:#111;font-weight:900;padding:12px 14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}.btn.alt{background:#28283a;color:white;border:1px solid var(--line)}.btn:hover{filter:brightness(.94)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.step,.note{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:17px}.step b{color:var(--lime)}.step p,.note{color:var(--muted);line-height:1.65}.note strong{color:var(--text)}footer{border-top:1px solid var(--line);padding:25px 0 90px;color:var(--muted);font-size:.9rem}
+.cart{position:fixed;right:16px;bottom:90px;z-index:9999;border:0;border-radius:99px;background:var(--lime);color:#111;font-weight:900;padding:14px 18px;cursor:pointer;box-shadow:0 10px 35px #0008}
+.backdrop{display:none;position:fixed;inset:0;background:#000b;z-index:20;align-items:center;justify-content:center;padding:14px}.backdrop.open{display:flex}.modal{width:min(560px,100%);max-height:92vh;overflow:auto;background:#151521;border:1px solid #41415a;border-radius:20px;padding:21px}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.modal h2{font-size:1.5rem}.close{border:1px solid var(--line);border-radius:9px;background:#26263a;color:white;padding:8px 11px;cursor:pointer}
+label{display:block;color:#dedeee;font-size:.9rem;margin:13px 0 6px}input,select,textarea{width:100%;background:#0c0c14;color:white;border:1px solid #3a3a50;border-radius:10px;padding:12px;font:inherit}textarea{min-height:70px}.summary{background:#0c0c14;border:1px solid var(--line);border-radius:12px;padding:13px;margin:13px 0}.small{font-size:.85rem;color:var(--muted);line-height:1.6}.warning{color:#ffd28a}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:40px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.steps{grid-template-columns:1fr}}
+@media(max-width:540px){.grid{grid-template-columns:1fr}.heading{align-items:start;flex-direction:column}.tag{font-size:.7rem}h1{letter-spacing:-1px}.cart{right:14px;bottom:88px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><div class="brand">THE <span>TOOL LOFT</span></div><div class="tag">Digital Tools · Creative Services</div></div></header>
+<main class="wrap">
+  <div class="hero">
+    <div><div class="eyebrow">Your digital workspace</div><h1>Tools to create.<br><span>Services to grow.</span></h1>
+      <p class="lead">Explore all our current digital tools and creative services in one place. Select any item to see its price and add it to your order. We’ll confirm availability and payment details with you on WhatsApp before delivery.</p>
+    </div>
+    <div class="hero-box"><div class="eyebrow">Easy ordering</div><h3>Choose · Confirm · Receive</h3><p>Prices are shown on each product card in PKR and approximate USDT. Send your order to WhatsApp to confirm final details.</p></div>
+  </div>
+  <section id="store">
+    <div class="heading"><div><h2>All Products & Services</h2><p>Every available listing is shown below.</p></div><div class="count" id="count">9 listings</div></div>
+    <div class="filters">
+      <button class="filter active" data-filter="all">All Products</button>
+      <button class="filter" data-filter="tools">Digital Tools</button>
+      <button class="filter" data-filter="cv">CV & Resume</button>
+      <button class="filter" data-filter="design">Design</button>
+      <button class="filter" data-filter="editing">Video Editing</button>
+      <button class="filter" data-filter="other">Other</button>
+    </div>
+    <div class="grid" id="products">
+      <article class="card"><div class="icon">✂️</div><h3>CapCut Pro</h3><p class="desc">Video editing tool access.</p><div class="price">PKR 1,000</div><div class="usd">≈ 3.62 USDT</div><div class="detail">1 month · 25 days warranty</div><button class="btn" type="button" data-add="capcut">Add to Order +</button></article>
+      <article class="card"><div class="icon">🎨</div><h3>Canva Pro</h3><p class="desc">Design tools for posts and creative projects.</p><div class="price">PKR 1,000</div><div class="usd">≈ 3.62 USDT</div><div class="detail">3-year offer · Confirm terms</div><button class="btn" type="button" data-add="canva">Add to Order +</button></article>
+      <article class="card"><div class="icon">🤖</div><h3>ChatGPT</h3><p class="desc">AI assistance for writing and productivity.</p><div class="price">PKR 5,509</div><div class="usd">≈ 19.93 USDT</div><div class="detail">1 month · Confirm plan</div><button class="btn" type="button" data-add="chatgpt">Add to Order +</button></article>
+      <article class="card"><div class="icon">📄</div><h3>Basic CV</h3><p class="desc">A clean CV layout for job applications.</p><div class="price">PKR 300</div><div class="usd">≈ 1.09 USDT</div><div class="detail">Includes 1 change</div><button class="btn" type="button" data-add="basiccv">Add to Order +</button></article>
+      <article class="card"><div class="icon">🧾</div><h3>Medium CV</h3><p class="desc">A polished CV design with professional details.</p><div class="price">PKR 500</div><div class="usd">≈ 1.81 USDT</div><div class="detail">Includes up to 4 changes</div><button class="btn" type="button" data-add="mediumcv">Add to Order +</button></article>
+      <article class="card"><div class="icon">⭐</div><h3>Premium CV</h3><p class="desc">A premium CV design tailored to your requirements.</p><div class="price">PKR 1,000</div><div class="usd">≈ 3.62 USDT</div><div class="detail">Discuss revision needs on WhatsApp</div><button class="btn" type="button" data-add="premiumcv">Add to Order +</button></article>
+      <article class="card"><div class="icon">🖼️</div><h3>Thumbnail Design</h3><p class="desc">Custom YouTube thumbnail design.</p><div class="price">PKR 200</div><div class="usd">≈ 0.72 USDT</div><div class="detail">Per thumbnail</div><button class="btn" type="button" data-add="thumbnail">Add to Order +</button></article>
+      <article class="card"><div class="icon">🎬</div><h3>Video / Reel Editing</h3><p class="desc">Editing service for short-form videos.</p><div class="price">PKR 300</div><div class="usd">≈ 1.09 USDT</div><div class="detail">Per reel</div><button class="btn" type="button" data-add="editing">Add to Order +</button></article>
+      <article class="card"><div class="icon">🔐</div><h3>VPN Service</h3><p class="desc">Ask about supported plans and availability.</p><div class="price">Ask for price</div><div class="usd">Price confirmed on WhatsApp</div><div class="detail">Contact before ordering</div><button class="btn" type="button" data-add="vpn">Add to Order +</button></article>
+    </div>
+  </section>
+  <section><div class="heading"><div><h2>How It Works</h2><p>Simple and transparent ordering.</p></div></div><div class="steps">
+    <div class="step"><b>01 · Select</b><p>Choose products or services and add them to your order.</p></div>
+    <div class="step"><b>02 · Contact</b><p>Send your order summary to WhatsApp and confirm payment options.</p></div>
+    <div class="step"><b>03 · Verify & Deliver</b><p>Delivery or service work starts after payment is independently verified.</p></div>
+  </div></section>
+  <section><div class="note"><strong>Payment information:</strong> This page sends an order request to WhatsApp only. It does not collect payments or automatically verify transactions. Confirm payment details before sending money, and never share an OTP, password, or wallet recovery phrase.</div></section>
+</main>
+<footer><div class="wrap">© <span id="year"></span> The Tool Loft · Prices and availability should be confirmed before payment.</div></footer>
+<button class="cart" id="cartBtn">Order (<span id="cartCount">0</span>)</button>
+<div class="backdrop" id="backdrop"><div class="modal">
+  <div class="modal-head"><h2>Your Order</h2><button class="close" id="closeBtn">Close ✕</button></div>
+  <div id="cartItems"></div><div class="summary"><strong id="totalPKR">PKR 0</strong><div class="small" id="totalUSDT">Approx. 0 USDT</div></div>
+  <div class="small">USDT amounts are estimates, not live exchange rates. Confirm the final total with us.</div>
+  <label for="customerName">Your name</label><input id="customerName" placeholder="Enter your name">
+  <label for="paymentMethod">Preferred payment method</label><select id="paymentMethod"><option>Confirm on WhatsApp</option><option>Binance Pay (UID 1068235220)</option><option>SadaPay (confirm details)</option></select>
+  <div id="binanceDetails" class="summary" style="display:none">
+    <strong>Binance Pay Details</strong>
+    <p class="small">Recipient name: <strong style="color:var(--lime)">Kashif Jamil</strong><br>Binance Pay UID: <strong style="color:var(--lime)">1068235220</strong></p>
+    <p class="small warning">Please verify the recipient name and UID inside Binance Pay before sending. Confirm the final amount first.</p>
+  </div>
+  <div id="sadaPayDetails" class="summary" style="display:none">
+    <strong>SadaPay Details</strong>
+    <p class="small">Account name: <strong style="color:var(--lime)">Sadia Dost</strong><br>Number: <strong style="color:var(--lime)">03267594830</strong></p>
+    <p class="small warning">Confirm the account details and final amount before sending payment.</p>
+  </div>
+  <label for="notes">Order notes (optional)</label><textarea id="notes" placeholder="Add any requirements"></textarea>
+  <p class="small warning">No payment is taken here. Please wait for confirmation before paying.</p>
+  <button class="btn" id="sendBtn" style="width:100%">Send Order to WhatsApp ↗</button><p class="small" id="message"></p>
+</div></div>
+<script>
+const WHATSAPP_NUMBER="923267594830";
+const items=[
+{id:"capcut",name:"CapCut Pro",cat:"tools",price:1000,usd:3.62},
+{id:"canva",name:"Canva Pro",cat:"tools",price:1000,usd:3.62},
+{id:"chatgpt",name:"ChatGPT",cat:"tools",price:5509,usd:19.93},
+{id:"basiccv",name:"Basic CV",cat:"cv",price:300,usd:1.09},
+{id:"mediumcv",name:"Medium CV",cat:"cv",price:500,usd:1.81},
+{id:"premiumcv",name:"Premium CV",cat:"cv",price:1000,usd:3.62},
+{id:"thumbnail",name:"Thumbnail Design",cat:"design",price:200,usd:.72},
+{id:"editing",name:"Video / Reel Editing",cat:"editing",price:300,usd:1.09},
+{id:"vpn",name:"VPN Service",cat:"other",price:null,usd:null}
+];
+let cart=[];
+const fmt=n=>"PKR "+Number(n).toLocaleString("en-PK");
+function addToCart(id){
+ const p=items.find(x=>x.id===id);
+ if(!p){console.error("Product not found:",id);return;}
+ const f=cart.find(x=>x.id===id);
+ if(f) f.qty++; else cart.push({...p,qty:1});
+ updateCart();
+ const btn=document.querySelector('[data-add="'+id+'"]');
+ if(btn){const old=btn.textContent;btn.textContent="Added ✓";setTimeout(()=>btn.textContent=old,900);}
+}
+document.addEventListener("click", function(e){
+ const btn=e.target.closest("[data-add]");
+ if(btn){e.preventDefault();addToCart(btn.getAttribute("data-add"));}
+});
+window.changeQty=changeQty;
+function changeQty(id,d){let p=cart.find(x=>x.id===id);if(!p)return;p.qty+=d;if(p.qty<1)cart=cart.filter(x=>x.id!==id);updateCart();}
+function updateCart(){
+ document.getElementById("cartCount").textContent=cart.reduce((s,p)=>s+p.qty,0);
+ document.getElementById("cartItems").innerHTML=cart.length?cart.map(p=>`<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding:12px 0"><div><b>${p.name}</b><div class="small">${p.price===null?"Price to confirm":fmt(p.price)+" × "+p.qty}</div></div><div style="display:flex;gap:6px"><button class="close" onclick="changeQty('${p.id}',-1)">−</button><button class="close" onclick="changeQty('${p.id}',1)">+</button></div></div>`).join(""):'<p class="small">Your order is empty. Close this window and add a product first.</p>';
+ let total=cart.reduce((s,p)=>s+(p.price===null?0:p.price*p.qty),0),usd=cart.reduce((s,p)=>s+(p.usd===null?0:p.usd*p.qty),0),unknown=cart.some(p=>p.price===null);
+ document.getElementById("totalPKR").textContent=fmt(total)+(unknown?" + price to confirm":"");
+ document.getElementById("totalUSDT").textContent="Approx. "+usd.toFixed(2)+" USDT"+(unknown?" + price to confirm":"");
+}
+const paymentMethodSelect = document.getElementById("paymentMethod");
+const binanceDetails = document.getElementById("binanceDetails");
+const sadaPayDetails = document.getElementById("sadaPayDetails");
+paymentMethodSelect.addEventListener("change", () => {
+  binanceDetails.style.display = paymentMethodSelect.value.startsWith("Binance Pay") ? "block" : "none";
+  sadaPayDetails.style.display = paymentMethodSelect.value.startsWith("SadaPay") ? "block" : "none";
+});
+document.getElementById("cartBtn").onclick=()=>{updateCart();document.getElementById("backdrop").classList.add("open");};
+document.getElementById("closeBtn").onclick=()=>document.getElementById("backdrop").classList.remove("open");
+document.getElementById("backdrop").onclick=e=>{if(e.target.id==="backdrop")e.currentTarget.classList.remove("open");};
+document.querySelectorAll(".filter").forEach(b=>b.onclick=()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");let f=b.dataset.filter;document.querySelectorAll("#products .card").forEach(c=>{let id=c.querySelector("button").getAttribute("onclick").match(/'([^']+)'/)[1],p=items.find(x=>x.id===id);c.style.display=f==="all"||p.cat===f?"flex":"none";});});
+document.getElementById("sendBtn").onclick=()=>{
+ if(!cart.length){document.getElementById("message").textContent="Please add a product first.";return;}
+ let name=document.getElementById("customerName").value.trim()||"Not provided",method=document.getElementById("paymentMethod").value,note=document.getElementById("notes").value.trim()||"None";
+ let total=cart.reduce((s,p)=>s+(p.price===null?0:p.price*p.qty),0),usd=cart.reduce((s,p)=>s+(p.usd===null?0:p.usd*p.qty),0);
+ let lines=cart.map(p=>"- "+p.name+" × "+p.qty+": "+(p.price===null?"Price to confirm":fmt(p.price*p.qty)+" (approx. "+(p.usd*p.qty).toFixed(2)+" USDT)")).join("\n");
+ let paymentDetails = method.startsWith("Binance Pay")
+    ? "\nBinance Pay UID: 1068235220\nRecipient name: Kashif Jamil"
+    : (method.startsWith("SadaPay") ? "\nSadaPay account name: Sadia Dost\nSadaPay number: 03267594830" : "");
+  let msg="THE TOOL LOFT — ORDER REQUEST\nName: "+name+"\n\nItems:\n"+lines+"\n\nEstimated total: "+fmt(total)+(cart.some(p=>p.price===null)?" + price to confirm":"")+"\nApprox total: "+usd.toFixed(2)+" USDT\nPreferred payment: "+method+paymentDetails+"\nNotes: "+note+"\n\nPlease confirm availability and final amount. I will verify payment before delivery.";
+ window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(msg),"_blank");
+};
+document.getElementById("year").textContent=new Date().getFullYear();updateCart();
+</script>
+</body>
+</html>
